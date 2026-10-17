@@ -43,6 +43,25 @@ The interface features a premium dark theme, purple accents, subtle glow effects
 - Git and GitHub
 - Vercel
 
+
+## First-Visit Onboarding
+
+TaskForge includes a responsive welcome experience for new visitors.
+
+Users can choose between two onboarding paths:
+
+- **Explore Demo Workspace:** Open a pre-populated dashboard with sample tasks and projects to explore the application.
+- **Start Fresh:** Begin with an empty workspace and create tasks and projects from scratch.
+
+The selected experience is remembered using browser localStorage, so returning visitors can continue directly to their dashboard.
+
+### Data Persistence
+
+- Tasks, projects, theme preferences, and navigation state are stored locally in the browser.
+- Existing users retain their saved workspace data when the onboarding feature is introduced.
+- Each browser maintains independent data.
+- No account registration, backend database, or cross-device synchronization is required for this demonstration.
+
 ## Getting Started
 
 ### Prerequisites
