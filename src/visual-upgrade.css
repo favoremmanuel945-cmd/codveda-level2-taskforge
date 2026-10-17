@@ -1,0 +1,234 @@
+
+/* TASKFORGE — PREMIUM VISUAL UPGRADE */
+
+/* Animated dashboard entrance */
+.main-content,
+.content,
+.stat-card,
+.project-card {
+  animation: tfReveal .55s ease both;
+}
+
+@keyframes tfReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhanced cards */
+.stat-card,
+.project-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    box-shadow .28s ease,
+    border-color .28s ease;
+}
+
+.stat-card::before,
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 95% 0%,
+    rgba(151,108,255,.11),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity .3s ease;
+  z-index: -1;
+}
+
+.stat-card:hover,
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(155,117,255,.42);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.13),
+    0 0 25px rgba(143,91,255,.07);
+}
+
+.stat-card:hover::before,
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Icon motion */
+.stat-card svg,
+.project-card svg,
+.sidebar svg {
+  transition: transform .25s ease, filter .25s ease;
+}
+
+.stat-card:hover svg,
+.project-card:hover svg {
+  transform: scale(1.13) rotate(-5deg);
+  filter: drop-shadow(0 0 7px rgba(160,115,255,.3));
+}
+
+/* Project progress */
+.progress-track {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.progress-fill {
+  position: relative;
+  border-radius: inherit;
+  background-image: linear-gradient(
+    90deg,
+    rgba(116,73,232,.85),
+    rgba(190,154,255,1)
+  );
+  box-shadow: 0 0 13px rgba(156,112,255,.28);
+  transition: width .55s ease;
+}
+
+/* Sidebar interaction */
+.sidebar nav button,
+.sidebar .nav-item {
+  transition:
+    background .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+.sidebar nav button:hover,
+.sidebar .nav-item:hover {
+  transform: translateX(3px);
+}
+
+/* Buttons */
+.primary-btn,
+.secondary-btn {
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 22px rgba(139,92,246,.18);
+}
+
+/* Respect keyboard navigation */
+:where(button, input, select, a):focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
+}
+
+/* Light theme refinement */
+[data-theme="light"] .stat-card:hover,
+[data-theme="light"] .project-card:hover {
+  box-shadow: 0 15px 35px rgba(70,45,120,.09);
+}
+
+/* Mobile-friendly */
+@media (max-width: 768px) {
+  .stat-card:hover,
+  .project-card:hover,
+  .primary-btn:hover,
+  .secondary-btn:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .main-content,
+  .content,
+  .stat-card,
+  .project-card {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
+
+
+/* TASKFORGE_MOBILE_GLOW_V1 */
+
+/* Consistent ambient lighting across devices */
+.stat-card,
+.project-card {
+  --tf-glow: rgba(151, 108, 255, .18);
+}
+
+/* Touchscreens do not have a conventional hover state */
+@media (hover: none), (pointer: coarse) {
+
+  .stat-card,
+  .project-card {
+    border-color: rgba(151, 108, 255, .25);
+    box-shadow:
+      0 0 20px rgba(151, 108, 255, .10),
+      inset 0 0 22px rgba(151, 108, 255, .035);
+  }
+
+  .stat-card::before,
+  .project-card::before {
+    opacity: 1;
+  }
+
+  .stat-card:active,
+  .project-card:active {
+    transform: scale(.985);
+    border-color: rgba(174, 135, 255, .65);
+    box-shadow:
+      0 0 30px rgba(151, 108, 255, .24),
+      inset 0 0 25px rgba(151, 108, 255, .08);
+  }
+
+  .stat-card svg,
+  .project-card svg {
+    filter: drop-shadow(0 0 5px rgba(151,108,255,.24));
+  }
+}
+
+/* Additional treatment for narrow mobile layouts */
+@media (max-width: 768px) {
+
+  .stat-card,
+  .project-card {
+    box-shadow:
+      0 0 18px rgba(151,108,255,.11),
+      0 7px 22px rgba(0,0,0,.06);
+  }
+
+  .stat-card::before,
+  .project-card::before {
+    opacity: .75;
+  }
+
+  .stat-card:active,
+  .project-card:active {
+    box-shadow:
+      0 0 28px rgba(151,108,255,.25);
+  }
+}
+
+/* Light theme: softer glow for contrast */
+[data-theme="light"] .stat-card,
+[data-theme="light"] .project-card {
+  --tf-glow: rgba(119, 75, 220, .12);
+}
+
+@media (hover: none), (pointer: coarse) {
+  [data-theme="light"] .stat-card,
+  [data-theme="light"] .project-card {
+    box-shadow:
+      0 0 18px rgba(119,75,220,.10),
+      0 8px 24px rgba(50,35,90,.06);
+  }
+}
+
