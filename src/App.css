@@ -210,3 +210,143 @@ h1 { font-size: clamp(25px,3vw,34px); letter-spacing: -1.4px; margin: 11px 0 9px
   padding: 13px;
 }
 .modal-select option { background: var(--surface); color: var(--text); }
+
+
+/* TASKFORGE — FLOATING PRODUCTIVITY HERO */
+.taskforge-hero-art {
+  position: absolute;
+  right: 7%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 210px;
+  height: 170px;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 12px 30px rgba(126,87,255,.15));
+}
+
+.taskforge-orbit {
+  position: absolute;
+  inset: 9px 27px;
+  border: 1px solid rgba(202,180,255,.24);
+  border-radius: 50%;
+  animation: taskforge-orbit 18s linear infinite;
+}
+
+.taskforge-orbit-two {
+  inset: 25px 5px;
+  transform: rotate(55deg);
+  animation-duration: 24s;
+  animation-direction: reverse;
+}
+
+.taskforge-floating-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #e9dfff;
+  border: 1px solid rgba(221,204,255,.35);
+  background: linear-gradient(145deg,rgba(131,93,211,.42),rgba(42,28,77,.85));
+  box-shadow: 0 14px 35px rgba(12,5,37,.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.taskforge-card-main {
+  width: 100px;
+  height: 100px;
+  left: 55px;
+  top: 34px;
+  border-radius: 27px;
+  transform: rotate(-12deg);
+  animation: taskforge-float 5s ease-in-out infinite;
+}
+
+.taskforge-card-top {
+  top: 4px;
+  right: 0;
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  animation: taskforge-float 4.5s ease-in-out infinite reverse;
+}
+
+.taskforge-card-bottom {
+  bottom: 3px;
+  left: 0;
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  animation: taskforge-float 5.5s ease-in-out infinite;
+}
+
+@keyframes taskforge-float {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+@keyframes taskforge-orbit {
+  to { rotate: 360deg; }
+}
+
+@media(max-width:700px) {
+  .taskforge-hero-art {
+    right: 4px;
+    top: 45px;
+    transform: scale(.55);
+    transform-origin: top right;
+    opacity: .55;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .taskforge-hero-art * {
+    animation: none !important;
+  }
+}
+
+.banner-kicker { position: relative; overflow: hidden; }
+
+
+/* TASKFORGE HERO ILLUSTRATION POSITION FIX */
+.banner-kicker {
+  position: static !important;
+  overflow: visible !important;
+}
+
+.taskforge-hero-art {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  height: 160px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.taskforge-floating-card {
+  position: absolute;
+}
+
+.taskforge-card-main {
+  right: 8px;
+  top: 24px;
+}
+
+.taskforge-card-top {
+  right: 90px;
+  top: 0;
+}
+
+@media (max-width: 700px) {
+  .taskforge-hero-art {
+    display: none;
+  }
+}

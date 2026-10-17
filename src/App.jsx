@@ -1,3 +1,4 @@
+import './visual-upgrade.css'
 // TASKFORGE_STEP5
 import {
   useEffect,
@@ -281,7 +282,23 @@ function App() {
           {(active === 'Overview' || active === 'Settings') && (
             <div className="welcome-banner">
               <div>
-                <div className="banner-kicker"><Sparkles size={15}/> PRODUCTIVITY, REIMAGINED</div>
+                <div className="banner-kicker">
+        <div className="taskforge-hero-art" aria-hidden="true">
+          <div className="taskforge-orbit taskforge-orbit-one" />
+          <div className="taskforge-orbit taskforge-orbit-two" />
+          <div className="taskforge-floating-card taskforge-card-top">
+            <Sparkles size={18} />
+            <span>CREATE</span>
+          </div>
+          <div className="taskforge-floating-card taskforge-card-main">
+            <CheckCircle2 size={44} strokeWidth={1.6} />
+          </div>
+          <div className="taskforge-floating-card taskforge-card-bottom">
+            <CheckCircle2 size={16} />
+            <span>ON TRACK</span>
+          </div>
+        </div>
+<Sparkles size={15}/> PRODUCTIVITY, REIMAGINED</div>
                 <h2>Stay focused. Make it happen.</h2>
                 <p>Everything you need to organize your work and turn plans into progress.</p>
               </div>
