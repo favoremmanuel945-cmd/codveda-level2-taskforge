@@ -1,0 +1,171 @@
+
+/* TASKFORGE — FIRST VISIT EXPERIENCE */
+
+.tf-onboarding {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.tf-welcome-glow {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  top: -260px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(151,108,255,.22),
+    rgba(151,108,255,.07) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.tf-welcome-content {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  text-align: center;
+  z-index: 1;
+  animation: tfWelcomeIn .65s ease both;
+}
+
+.tf-welcome-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-family: Manrope, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 50px;
+}
+
+.tf-welcome-label {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.tf-welcome-content h1 {
+  font-size: clamp(38px, 6vw, 70px);
+  line-height: 1.13;
+  letter-spacing: -3px;
+  margin-bottom: 23px;
+}
+
+.tf-welcome-content h1 span {
+  background: linear-gradient(90deg,#a78bfa,#d9b8ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.tf-welcome-description {
+  max-width: 490px;
+  margin: 0 auto 42px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.tf-welcome-options {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 17px;
+  text-align: left;
+}
+
+.tf-welcome-option {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  padding: 28px;
+  text-align: left;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 250px;
+  transition: transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.tf-welcome-option:hover {
+  transform: translateY(-5px);
+  border-color: rgba(167,139,250,.6);
+  box-shadow: 0 0 35px rgba(151,108,255,.13);
+}
+
+.tf-option-icon {
+  display: grid;
+  place-items: center;
+  width: 47px;
+  height: 47px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 13px;
+  margin-bottom: 10px;
+}
+
+.tf-welcome-option strong {
+  font-size: 17px;
+  font-family: Manrope,sans-serif;
+}
+
+.tf-welcome-option > span:not(.tf-option-action) {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.tf-option-action {
+  margin-top: auto;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.tf-welcome-footer {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 45px;
+}
+
+@keyframes tfWelcomeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:600px) {
+  .tf-onboarding { padding: 40px 19px; }
+  .tf-welcome-brand { margin-bottom: 38px; }
+  .tf-welcome-content h1 { letter-spacing: -1.8px; }
+  .tf-welcome-description { font-size: 13px; }
+  .tf-welcome-options { grid-template-columns: 1fr; }
+  .tf-welcome-option { min-height: 190px; padding: 22px; }
+  .tf-welcome-glow { width: 400px; height: 400px; top: -100px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .tf-welcome-content { animation: none; }
+  .tf-welcome-option { transition: none; }
+}

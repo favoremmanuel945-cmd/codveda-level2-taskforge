@@ -1,3 +1,4 @@
+import './onboarding.css'
 import './visual-upgrade.css'
 // TASKFORGE_STEP5
 import {
@@ -19,7 +20,8 @@ import {
   Trash2,
   Menu,
   X,
-  Sparkles
+  Sparkles,
+  ArrowUpRight
 } from 'lucide-react'
 import './App.css'
 
@@ -88,7 +90,7 @@ function Sidebar({ active, setActive, open, setOpen }) {
           </button>
           <div className="profile">
             <div className="avatar">EF</div>
-            <div><strong>Emmanuel Favor</strong><span>Workspace Admin</span></div>
+            <div><strong>TaskForge Workspace</strong><span>Personal workspace</span></div>
           </div>
         </div>
       </aside>
@@ -170,7 +172,75 @@ function TaskList({ tasks, setTasks, search, filter }) {
   )
 }
 
+
+// TASKFORGE_ONBOARDING_V1
+function WelcomeScreen({ onExplore, onFresh }) {
+  return (
+    <div className="tf-onboarding">
+      <div className="tf-welcome-glow" aria-hidden="true" />
+
+      <div className="tf-welcome-content">
+        <div className="tf-welcome-brand">
+          <div className="brand-icon"><Sparkles size={22}/></div>
+          <span>taskforge<span className="brand-dot">.</span></span>
+        </div>
+
+        <div className="tf-welcome-label">
+          YOUR PRODUCTIVITY STARTS HERE
+        </div>
+
+        <h1>Make space for<br/>
+          <span>your best work.</span>
+        </h1>
+
+        <p className="tf-welcome-description">
+          Organize your tasks, track project progress,
+          and bring clarity to everything you're building.
+        </p>
+
+        <div className="tf-welcome-options">
+          <button className="tf-welcome-option"
+            onClick={onExplore}>
+            <div className="tf-option-icon">
+              <LayoutDashboard size={24}/>
+            </div>
+            <strong>Explore Demo Workspace</strong>
+            <span>Discover TaskForge with ready-made projects and tasks.</span>
+            <span className="tf-option-action">
+              Explore demo <ArrowUpRight size={17}/>
+            </span>
+          </button>
+
+          <button className="tf-welcome-option"
+            onClick={onFresh}>
+            <div className="tf-option-icon">
+              <Plus size={24}/>
+            </div>
+            <strong>Start Fresh</strong>
+            <span>Create your own workspace and organize work your way.</span>
+            <span className="tf-option-action">
+              Get started <ArrowUpRight size={17}/>
+            </span>
+          </button>
+        </div>
+
+        <div className="tf-welcome-footer">
+          Built with React · Designed for productivity
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function App() {
+  const [onboardingComplete, setOnboardingComplete] = useState(() => {
+    const choice = localStorage.getItem('taskforge-onboarding')
+    if (choice === 'demo' || choice === 'fresh') return true
+
+    // Existing users should not lose their workspace.
+    return localStorage.getItem('taskforge-tasks') !== null ||
+      localStorage.getItem('taskforge-projects') !== null
+  })
   const [theme, setTheme] = useState(() => readStorage('taskforge-theme', 'dark'))
   const [tasks, setTasks] = useState(() => readStorage('taskforge-tasks', initialTasks))
   const [projectList, setProjectList] = useState(() => readStorage('taskforge-projects', projects))
@@ -233,6 +303,24 @@ function App() {
     localStorage.setItem('taskforge-active-page', JSON.stringify(active))
   }, [active])
 
+
+  function finishOnboarding(mode) {
+    if (mode === 'fresh') {
+      setTasks([])
+      setProjectList([])
+      setActive('Overview')
+      setSelectedProject('Personal')
+    } else {
+      setTasks(initialTasks)
+      setProjectList(projects)
+      setActive('Overview')
+      setSelectedProject('Personal')
+    }
+
+    localStorage.setItem('taskforge-onboarding', mode)
+    setOnboardingComplete(true)
+  }
+
   const completed = useMemo(() => tasks.filter(t => t.done).length, [tasks])
   const pending = tasks.length - completed
   const percentage = tasks.length ? Math.round(completed / tasks.length * 100) : 0
@@ -250,6 +338,15 @@ function App() {
     }, ...previous])
     setNewTitle('')
     setShowAdd(false)
+  }
+
+  if (!onboardingComplete) {
+    return (
+      <WelcomeScreen
+        onExplore={() => finishOnboarding('demo')}
+        onFresh={() => finishOnboarding('fresh')}
+      />
+    )
   }
 
   return (
