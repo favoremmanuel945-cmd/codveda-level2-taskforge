@@ -1,16 +1,132 @@
-# React + Vite
+# TaskForge — Productivity Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive task and project management dashboard built with React, Vite, and CSS.
 
-Currently, two official plugins are available:
+Developed as part of the Codveda Technologies Web Development Internship — Level 2.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo
 
-## React Compiler
+https://codveda-level2-taskforge.vercel.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## GitHub Repository
 
-## Expanding the ESLint configuration
+https://github.com/favoremmanuel945-cmd/codveda-level2-taskforge
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Overview
+
+TaskForge helps users organize tasks, manage projects, monitor progress, and maintain productivity through a clean, interactive dashboard.
+
+The interface features a premium dark theme, purple accents, subtle glow effects, responsive layouts, and intuitive navigation.
+
+## Features
+
+- Interactive productivity dashboard
+- Create, complete, search, filter, and delete tasks
+- Create and delete projects
+- Project progress tracking
+- Task priority indicators
+- Dashboard statistics and completion rates
+- Dark and light theme switching
+- Responsive desktop and mobile layouts
+- Persistent task data using browser localStorage
+- Modern icons and visual effects
+- Client-side navigation between dashboard sections
+
+## Technology Stack
+
+- React
+- JavaScript (JSX)
+- Vite
+- CSS3
+- Lucide React
+- Browser localStorage
+- Git and GitHub
+- Vercel
+
+## Getting Started
+
+### Prerequisites
+
+Install Node.js and npm.
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/favoremmanuel945-cmd/codveda-level2-taskforge.git
+cd codveda-level2-taskforge
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in your terminal.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+### Code Quality
+
+```bash
+npm run lint
+```
+
+## Application Sections
+
+### Overview
+View productivity statistics, active projects, and task progress.
+
+### My Tasks
+Create and manage tasks, update completion status, and filter or search tasks.
+
+### Projects
+Organize work into projects and monitor completion progress.
+
+### Settings
+Switch between supported interface themes.
+
+## Data Persistence
+
+TaskForge uses browser localStorage to preserve application data between page refreshes.
+
+Data is stored locally in the user's browser. The current version does not include cloud synchronization, authentication, or a backend database.
+
+## Responsive Design
+
+The application supports desktop and mobile screen sizes, with adaptive layouts and mobile-friendly navigation.
+
+## Deployment
+
+TaskForge is deployed on Vercel and connected to the GitHub repository.
+
+Updates pushed to the main branch trigger production deployments.
+
+## Future Improvements
+
+- User authentication
+- Cloud database synchronization
+- Team collaboration
+- Task due dates and reminders
+- Advanced productivity analytics
+
+## Developer
+
+Emmanuel Favor
+
+LinkedIn: https://www.linkedin.com/in/emmanuelfavor
+
+GitHub: https://github.com/favoremmanuel945-cmd
+
+## Internship
+
+Codveda Technologies — Web Development Internship
+
+Level 2 Project: TaskForge Productivity Dashboard
